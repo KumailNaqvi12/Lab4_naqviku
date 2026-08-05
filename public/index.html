@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A real-time chat application created with Socket.IO." />
+    <title>Lab4_naqviku | Socket.IO Live Chat</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="chat-card" aria-label="Live chat application">
+        <header class="chat-header">
+          <div>
+            <p class="eyebrow">Lab4_naqviku</p>
+            <h1>Live Chat</h1>
+          </div>
+          <div class="status-pill" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="online-count">0 online</span>
+          </div>
+        </header>
+
+        <ol id="messages" class="messages" aria-live="polite" aria-label="Chat messages">
+          <li class="empty-state" id="empty-state">
+            <strong>No messages yet</strong>
+            <span>Start the conversation below.</span>
+          </li>
+        </ol>
+
+        <div id="typing-indicator" class="typing-indicator" aria-live="polite"></div>
+
+        <form id="message-form" class="composer" autocomplete="off">
+          <label class="sr-only" for="message-input">Message</label>
+          <input
+            id="message-input"
+            name="message"
+            type="text"
+            maxlength="500"
+            placeholder="Write a message..."
+            disabled
+          />
+          <button type="submit" disabled>Send</button>
+        </form>
+      </section>
+    </main>
+
+    <div id="join-overlay" class="join-overlay" role="dialog" aria-modal="true" aria-labelledby="join-title">
+      <form id="join-form" class="join-card">
+        <p class="eyebrow">WELCOME</p>
+        <h2 id="join-title">Join the conversation</h2>
+        <p>Choose a display name to enter the real-time chat room.</p>
+        <label for="name-input">Display name</label>
+        <input id="name-input" name="name" type="text" maxlength="24" required autofocus />
+        <button type="submit">Enter chat</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+  </body>
+</html>
